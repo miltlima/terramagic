@@ -13,7 +13,7 @@ from termcolor import cprint
 
 
 text = "TerraMagic-cli"
-cprint(figlet_format(text, font="slant"), "magenta")
+cprint(figlet_format(text, font="big"), "magenta")
 
 path = os.getcwd()
 print(f'Voce está no diretório {path}')
@@ -53,7 +53,7 @@ def create_files():
         if default_files == "S" or default_files == 's':
             for filename in terraform_files:
                 all = open(filename, 'w+')
-                print(f'Os seguintes arquivos foram criados: {terraform_files}')
+                print(f'Os seguintes arquivos foram criados: {filename}')
         else:
             print("Opção Invalida")
     elif path not in dir_list:
@@ -71,4 +71,3 @@ def create_files():
 
 create_dir()
 create_files()
-
