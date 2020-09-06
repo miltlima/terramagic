@@ -43,7 +43,8 @@ def create_dir():
 
 def create_files():
     dir_list = os.listdir('.')
-    print(dir_list)
+    for file in dir_list:
+        print(file)
     path = str(input("Informe qual Projeto você deseja criar esses arquivos: "))
     if path in dir_list:
         os.chdir(path)
