@@ -26,7 +26,7 @@ def create_dir():
                 print('Projeto já existe')
                 continue
         print(f"{name_dir} criado com sucesso")
-        response = str(input("Deseja criar outro ? S/N"))
+        response = str(input("Deseja criar outro ? S/N: "))
         if response == "S" or response == "s":
             create_dir()
         elif response == "N" or response == "n":
@@ -39,13 +39,17 @@ def create_dir():
 def create_files():
     dir_list = os.listdir('.')
     for file in dir_list:
-        print(file)
+        if os.path.isfile(file): print ('f-', file)
+        elif os.path.isdir(file): print ('d-', file)
+        elif os.path.islink(file): print ('l-', file)
+        else: print('---', file)
+        #print(file)
     path = str(input("Escolha a pasta para criar os Terraform files: "))
     if path in dir_list:
         os.chdir(path)
         print(f"Arquivos atuais do direrório {os.listdir('.')}")
         terraform_files = ['provider.tf', 'terraform.tfvars', 'backend.tf', 'vars.tf', '.gitignore', 'ec2.tf', 'output.tf']
-        default_files = str(input("Criar Terraform files para AWS ? S/N "))
+        default_files = str(input("Criar Terraform files para AWS ? S/N: "))
         if default_files == "S" or default_files == 's':
             for filename in terraform_files:
                 all = open(filename, 'w+')
