@@ -37,33 +37,41 @@ def create_dir():
 
 
 def create_files():
+    print("-------------------------------------------")
+    print("-- d = directory -- f = file -- l = link --")
+    print("-------------------------------------------")
     dir_list = os.listdir('.')
     for file in dir_list:
         if os.path.isfile(file): print ('f-', file)
         elif os.path.isdir(file): print ('d-', file)
         elif os.path.islink(file): print ('l-', file)
         else: print('---', file)
-        #print(file)
+        
     path = str(input("Escolha a pasta para criar os Terraform files: "))
     if path in dir_list:
         os.chdir(path)
         print(f"Arquivos atuais do direrório {os.listdir('.')}")
         terraform_files = ['provider.tf', 'terraform.tfvars', 'backend.tf', 'vars.tf', '.gitignore', 'ec2.tf', 'output.tf']
-        default_files = str(input("Criar Terraform files para AWS ? S/N: "))
-        if default_files == "S" or default_files == 's':
-            for filename in terraform_files:
-                all = open(filename, 'w+')
-                print(f'Os seguintes arquivos foram criados: {filename}')
-        else:
-            print("Opção Invalida")
+        while True:
+            default_files = str(input("Criar Terraform files para AWS ? S/N: "))
+            if default_files == "S" or default_files == "s":
+                for filename in terraform_files:
+                    all = open(filename, 'w+')
+                    print(f'Os seguintes arquivos foram criados: {filename}')
+            elif default_files == "N" or default_files == "n":
+                print("Você não criou Terraform Files")
+                break
+            else:
+                print("Opção Inválida")
     elif path not in dir_list:
         response = str(input("O Projeto não existe, deseja criar-lo S/N: "))
         if response == "S" or response == "s":
             create_dir()
+            create_files()
         elif response == "N" or response == "n":
             print('Você optou por não continuar :( ')
         else:
-            print('Você não informou uma opção valida')
+            print('Você não informou uma opção válida')
     else:
         os._exit
     return()
