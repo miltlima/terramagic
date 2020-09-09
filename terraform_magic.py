@@ -51,14 +51,15 @@ def create_files():
     path = str(input("Escolha a pasta para criar os Terraform files: "))
     if path in dir_list:
         os.chdir(path)
-        print(f"Arquivos atuais do direrório {os.listdir('.')}")
+        print(f"Existem {len(os.listdir('.'))} arquivos nesse diretório")
         terraform_files = ['provider.tf', 'terraform.tfvars', 'backend.tf', 'vars.tf', '.gitignore', 'ec2.tf', 'output.tf']
         while True:
-            default_files = str(input("Criar Terraform files para AWS ? S/N: "))
+            default_files = str(input("Criar Terraform files para AWS ? S ou N para sair: "))
             if default_files == "S" or default_files == "s":
                 for filename in terraform_files:
                     all = open(filename, 'w+')
                     print(f'Os seguintes arquivos foram criados: {filename}')
+                break
             elif default_files == "N" or default_files == "n":
                 print("Você não criou Terraform Files")
                 break
