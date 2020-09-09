@@ -28,4 +28,13 @@ ATTENTION: you need install pip packages.
 pip install -r requirements.txt
 ```
 
-Enjoy !
+Add permissions in file
+```
+chmod +x terraform_magic.py
+```
+
+Move file to system PATH:
+```
+sudo mv ./terraform_magic.py /usr/local/bin/terramagic
+```
+# Enjoy !
