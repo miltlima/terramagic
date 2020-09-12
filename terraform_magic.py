@@ -78,6 +78,8 @@ def create_files():
         os._exit
     return()
 
-
-create_dir()
-create_files()
+try:
+    create_dir()
+    create_files()
+except(KeyboardInterrupt):
+    print(" Você pressionou Ctrl+C para interromper este programa!")
