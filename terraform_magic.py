@@ -55,7 +55,7 @@ def create_files():
     if path in dir_list:
         os.chdir(path)
         print(f"Existem {len(os.listdir('.'))} arquivos nesse diretório")
-        terraform_files = [
+        file_list = [
             'provider.tf',
             'terraform.tfvars',
             'backend.tf',
@@ -67,7 +67,7 @@ def create_files():
         while True:
             default_files = str(input("Criar arquivos para AWS ? S(Sim) ou N(Sair): "))
             if default_files == "S" or default_files == "s":
-                for filename in terraform_files:
+                for filename in file_list:
                     all = open(filename, 'w+')
                     print(f'Os seguintes arquivos foram criados: {filename}')
                 break
