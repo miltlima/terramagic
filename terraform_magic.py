@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import os
 import sys
 from pyfiglet import figlet_format
@@ -43,18 +42,30 @@ def create_files():
     print("-------------------------------------------")
     dir_list = os.listdir('.')
     for file in dir_list:
-        if os.path.isfile(file): print ('f-', file)
-        elif os.path.isdir(file): print ('d-', file)
-        elif os.path.islink(file): print ('l-', file)
-        else: print('---', file)
-        
+        if os.path.isfile(file):
+            print('f-', file)
+        elif os.path.isdir(file):
+            print('d-', file)
+        elif os.path.islink(file):
+            print('l-', file)
+        else:
+            print('---', file)
+
     path = str(input("Escolha a pasta para criar os Terraform files: "))
     if path in dir_list:
         os.chdir(path)
         print(f"Existem {len(os.listdir('.'))} arquivos nesse diretório")
-        terraform_files = ['provider.tf', 'terraform.tfvars', 'backend.tf', 'vars.tf', '.gitignore', 'ec2.tf', 'output.tf']
+        terraform_files = [
+            'provider.tf',
+            'terraform.tfvars',
+            'backend.tf',
+            'vars.tf',
+            '.gitignore',
+            'ec2.tf',
+            'output.tf'
+            ]
         while True:
-            default_files = str(input("Criar Terraform files para AWS ? S para criar ou N para sair: "))
+            default_files = str(input("Criar arquivos para AWS ? S(Sim) ou N(Sair): "))
             if default_files == "S" or default_files == "s":
                 for filename in terraform_files:
                     all = open(filename, 'w+')
@@ -77,6 +88,7 @@ def create_files():
     else:
         os._exit
     return()
+
 
 try:
     create_dir()
