@@ -38,7 +38,7 @@ def create_dir():
 
 def create_files():
     print("-------------------------------------------")
-    print("-- d = directory -- f = file -- l = link --")
+    print("-- D = Directory -- F = file -- L = link --")
     print("-------------------------------------------")
     dir_list = os.listdir('.')
     for file in dir_list:
