@@ -43,11 +43,11 @@ def create_files():
     dir_list = os.listdir('.')
     for file in dir_list:
         if os.path.isfile(file):
-            print('f-', file)
+            print('F-', file)
         elif os.path.isdir(file):
-            print('d-', file)
+            print('D-', file)
         elif os.path.islink(file):
-            print('l-', file)
+            print('L-', file)
         else:
             print('---', file)
 
