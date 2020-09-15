@@ -35,6 +35,6 @@ chmod +x terraform_magic.py
 
 Move file to system PATH:
 ```
-sudo mv ./terraform_magic.py /usr/local/bin/terramagic
+sudo mv terraform_magic.py /usr/local/bin/terramagic
 ```
 # Enjoy !
