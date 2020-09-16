@@ -37,4 +37,4 @@ Move file to system PATH:
 ```
 sudo mv terraform_magic.py /usr/local/bin/terramagic
 ```
-# Enjoy !
+Enjoy !
