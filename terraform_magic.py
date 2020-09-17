@@ -6,7 +6,6 @@ from colorama import init
 init(strip=not sys.stdout.isatty())
 from termcolor import cprint
 
-
 text = "TerraMagic-cli"
 cprint(figlet_format(text, font="big"), "magenta")
 
