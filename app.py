@@ -4,7 +4,7 @@ import os
 from pyfiglet import figlet_format
 from colorama import init
 from termcolor import cprint
-from libs import providers_file
+from libs import datalib
 
 
 def print_version(ctx, param, value):
@@ -23,25 +23,27 @@ def print_version(ctx, param, value):
 @click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True)
 def main(name, provider):
     """ 
-    TerraMagic-cli create structure folders and files for Terraform
-
+    TerraMagic-cli is a tool for creating a structure of 
+    folders and files for Terraform
     """
     try:
         os.mkdir(name)
         os.chdir(name)
-        providers_file.modules()
-        if provider != "":
-            for file in providers_file.files:
-                open(file, "w+")
-            click.echo(f"Created terraform file to ☁️  {provider}")
-            os.chdir("..")
-    
+        match provider:
+            case ("AWS"|"Azure"|"GCP"|"OCI"):
+                datalib.modules()
+                for file in datalib.files:
+                    open(file, "w+")
+                click.echo(f"Created terraform file to {provider} ☁️ ")
+                os.chdir("..")
+            case (""):
+                for file in datalib.files:
+                    open(file, "w+")
+                click.echo("Created common terraform file")
+                os.chdir("..")
+
     except FileExistsError:
         click.echo("The directory already exists")
-    
-
-    
-
 
 if __name__ == "__main__":
     main()
