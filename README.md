@@ -1,40 +1,59 @@
+# Terramagic CLI
 
-## Motivation 
+## Motivation
 
-Inspired in Ansible Galaxy 
+Every time , I needed create a terraform files to a new project, and a new terraform files., but this is not good. and now we have a Terramagic tool to help us to create a terraform files.
 
-## Requirements 
+## Requirements
 
-- Python 3.8
+- Python 3.8 >=
 
-# Installation
+## How to install?
 
 Clone this project to folder you preference:
 
-``` 
+```shell
 https://github.com/miltlima/terramagic
-``` 
+```
 
+Enter in folder
 
-Enter in folder 
-
-` cd terramagic ` 
+```shell
+cd terramagic
+```
 
 ATTENTION: you need install pip packages.
 
-## How to install 
+## How to install these pip packages ?
 
-```
+```shell
 pip install -r requirements.txt
 ```
 
 Add permissions in file
-```
+
+```shell
 chmod +x terraform_magic.py
 ```
 
 Move file to system PATH:
-```
+
+```shell
 sudo mv terraform_magic.py /usr/local/bin/terramagic
 ```
-Enjoy !
+
+## How to use this tool ?
+
+```shell
+Usage: terramagic.py [OPTIONS]
+
+  TerraMagic-cli is a tool to creating a structure of folders and files to a terraform project.
+
+Options:
+  -n, --project-name TEXT  Name of the project
+  -p, --provider TEXT      Provider Name(AWS, Azure, GCP)
+  --version                Show version
+  --help                   Show this message and exit.
+```
+
+Enjoy!

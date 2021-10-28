@@ -18,25 +18,24 @@ def print_version(ctx, param, value):
 
 
 @click.command()
-@click.option("--name", "-n", default="None", help="Name of the project")
+@click.option("--project-name", "-n", default="None", help="Name of the project")
 @click.option("--provider","-p",default="None",help="Provider Name(AWS, Azure, GCP)")
-@click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True)
-def main(name, provider):
+@click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True, help="Show version")
+def main(project_name, provider):
     """ 
-    TerraMagic-cli is a tool for creating a structure of 
-    folders and files for Terraform
+    TerraMagic-cli is a tool for creating a structure of folders and files for Terraform
     """
     try:
-        os.mkdir(name)
-        os.chdir(name)
+        os.mkdir(project_name)
+        os.chdir(project_name)
         match provider:
             case ("AWS"|"Azure"|"GCP"|"OCI"):
                 datalib.modules()
                 for file in datalib.files:
                     open(file, "w+")
-                click.echo(f"Created terraform file to {provider} ☁️ ")
+                click.echo(f"Created terraform file for {provider} ☁️ ")
                 os.chdir("..")
-            case (""):
+            case (None):
                 for file in datalib.files:
                     open(file, "w+")
                 click.echo("Created common terraform file")
