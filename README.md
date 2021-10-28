@@ -1,5 +1,12 @@
 # Terramagic CLI
-
+```
+  ______                     __  ___            _                 ___ 
+ /_  __/__  ______________ _/  |/  /___ _____ _(_)____      _____/ (_)
+  / / / _ \/ ___/ ___/ __ `/ /|_/ / __ `/ __ `/ / ___/_____/ ___/ / / 
+ / / /  __/ /  / /  / /_/ / /  / / /_/ / /_/ / / /__/_____/ /__/ / /  
+/_/  \___/_/  /_/   \__,_/_/  /_/\__,_/\__, /_/\___/      \___/_/_/   
+                                    /____/                 
+```
 ## Motivation
 
 Every time , I needed create a terraform files to a new project, and a new terraform files., but this is not good. and now we have a Terramagic tool to help us to create a terraform files.
