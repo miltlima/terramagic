@@ -35,7 +35,7 @@ def main(project_name, provider):
                     open(file, "w+")
                 click.echo(f"Created terraform file for {provider} ☁️ ")
                 os.chdir("..")
-            case (None):
+            case _ :
                 for file in datalib.files:
                     open(file, "w+")
                 click.echo("Created common terraform file")
