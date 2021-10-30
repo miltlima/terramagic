@@ -10,11 +10,8 @@ files = [
     "main.tf",
     "variables.tf",
     "outputs.tf",
+    "backend.tf",
     "main.tfvars"
-]
-
-general_folder = [
-    "terraform-state"
 ]
 
 modules_folder =[
