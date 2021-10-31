@@ -1,1 +1,91 @@
-[{"package": "black", "version": "21.9b0", "deps": [{"package": "regex", "version": "2021.10.23"}, {"package": "platformdirs", "version": "2.4.0"}, {"package": "click", "version": "8.0.3"}, {"package": "typing-extensions", "version": "3.10.0.2"}, {"package": "mypy-extensions", "version": "0.4.3"}, {"package": "pathspec", "version": "0.9.0"}, {"package": "tomli", "version": "1.2.2"}]}, {"package": "click", "version": "8.0.3", "deps": []}, {"package": "colorama", "version": "0.4.3", "deps": []}, {"package": "flake8", "version": "4.0.1", "deps": [{"package": "mccabe", "version": "0.6.1"}, {"package": "pyflakes", "version": "2.4.0"}, {"package": "pycodestyle", "version": "2.8.0"}]}, {"package": "mccabe", "version": "0.6.1", "deps": []}, {"package": "mypy-extensions", "version": "0.4.3", "deps": []}, {"package": "pathspec", "version": "0.9.0", "deps": []}, {"package": "platformdirs", "version": "2.4.0", "deps": []}, {"package": "pycodestyle", "version": "2.8.0", "deps": []}, {"package": "pyfiglet", "version": "0.8.post1", "deps": []}, {"package": "pyflakes", "version": "2.4.0", "deps": []}, {"package": "regex", "version": "2021.10.23", "deps": []}, {"package": "termcolor", "version": "1.1.0", "deps": []}, {"package": "tomli", "version": "1.2.2", "deps": []}, {"package": "typing-extensions", "version": "3.10.0.2", "deps": []}]
+[{
+    "package": "black",
+    "version": "21.9b0",
+    "deps": [{
+        "package": "regex",
+        "version": "2021.10.23"
+    }, {
+        "package": "platformdirs",
+        "version": "2.4.0"
+    }, {
+        "package": "click",
+        "version": "8.0.3"
+    }, {
+        "package": "typing-extensions",
+        "version": "3.10.0.2"
+    }, {
+        "package": "mypy-extensions",
+        "version": "0.4.3"
+    }, {
+        "package": "pathspec",
+        "version": "0.9.0"
+    }, {
+        "package": "tomli",
+        "version": "1.2.2"
+    }]
+}, {
+    "package": "click",
+    "version": "8.0.3",
+    "deps": []
+}, {
+    "package": "colorama",
+    "version": "0.4.3",
+    "deps": []
+}, {
+    "package": "flake8",
+    "version": "4.0.1",
+    "deps": [{
+        "package": "mccabe",
+        "version": "0.6.1"
+    }, {
+        "package": "pyflakes",
+        "version": "2.4.0"
+    }, {
+        "package": "pycodestyle",
+        "version": "2.8.0"
+    }]
+}, {
+    "package": "mccabe",
+    "version": "0.6.1",
+    "deps": []
+}, {
+    "package": "mypy-extensions",
+    "version": "0.4.3",
+    "deps": []
+}, {
+    "package": "pathspec",
+    "version": "0.9.0",
+    "deps": []
+}, {
+    "package": "platformdirs",
+    "version": "2.4.0",
+    "deps": []
+}, {
+    "package": "pycodestyle",
+    "version": "2.8.0",
+    "deps": []
+}, {
+    "package": "pyfiglet",
+    "version": "0.8.post1",
+    "deps": []
+}, {
+    "package": "pyflakes",
+    "version": "2.4.0",
+    "deps": []
+}, {
+    "package": "regex",
+    "version": "2021.10.23",
+    "deps": []
+}, {
+    "package": "termcolor",
+    "version": "1.1.0",
+    "deps": []
+}, {
+    "package": "tomli",
+    "version": "1.2.2",
+    "deps": []
+}, {
+    "package": "typing-extensions",
+    "version": "3.10.0.2",
+    "deps": []
+}]
