@@ -21,7 +21,7 @@ def print_version(ctx, param, value):
         "TerraMagic-cli is a tool for creating a structure of folders and files for Terraform"
     )
     click.echo("Author: https://github.com/miltlima")
-    click.echo("Version: 0.3")
+    click.echo("Version: 0.0.2")
     ctx.exit()
 
 
