@@ -10,6 +10,7 @@ from libs import datalib
 def cli():
     pass
 
+@click.command()
 def create_module(name):
     pass
 
@@ -24,11 +25,12 @@ def print_version(ctx, param, value):
 
 
 @click.command()
-@click.option("--project-name", "-n", default="None", help="Name of the project")
-@click.option("--provider","-p",default="None",help="Provider Name(AWS, Azure, GCP)")
-@click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True, help="Show version")
-@click.option("--module" "-m", default="None", help="Module name")
-def main(project_name, provider):
+@click.option("--project-name", "-n", help="Name of the project")
+@click.option("--provider","-p",help="Provider Name(AWS, Azure, GCP)")
+@click.option("--version","-v", is_flag=True, callback=print_version, expose_value=False, is_eager=True, help="Show version")
+@click.option("--module", "-m", help="Module name(network, vpc, instances, clustes ...etc)", multiple=True)
+@click.option("--env", "-e", default="None", help="Environment name(dev, test, prod)")
+def main(project_name, provider, module, env):
     """ 
     TerraMagic-cli is a tool for creating a structure of folders and files for Terraform
     """
@@ -37,6 +39,7 @@ def main(project_name, provider):
         os.chdir(project_name)
         match provider:
             case ("AWS"|"Azure"|"GCP"|"OCI"|"aws"|"azure"|"gcp"|"oci"):
+
                 datalib.modules()
                 for file in datalib.files:
                     open(file, "w+")
@@ -47,9 +50,11 @@ def main(project_name, provider):
                     open(file, "w+")
                 click.echo("Created common terraform file")
                 os.chdir("..")
+         
 
     except FileExistsError:
-        click.echo("The directory already exists")
+        click.echo(click.style(("The directory already exists"), bg="red"))
+        os.chdir("..")
 
 if __name__ == "__main__":
     main()
