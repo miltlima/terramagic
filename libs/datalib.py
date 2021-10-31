@@ -1,30 +1,22 @@
 import os
 
-providers = [
-    "AWS",
-    "Azure",
-    "GCP"
-]
-
 files = [
     "main.tf",
     "variables.tf",
     "outputs.tf",
     "backend.tf",
-    "main.tfvars"
+    "main.tfvars",
+    ".gitignore",
 ]
 
-modules_folder =[
-    "vpc",
-    "cluster",
-    "instance"
-]
+modules_folder = ["vpc", "cluster", "instance"]
 
 modules_files = [
     "main.tf",
     "variables.tf",
     "outputs.tf",
 ]
+
 
 def modules():
     os.mkdir("modules")
@@ -36,4 +28,3 @@ def modules():
             open(file, "w+")
         os.chdir("..")
     os.chdir("..")
-

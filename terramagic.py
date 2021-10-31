@@ -6,50 +6,62 @@ from colorama import init
 from termcolor import cprint
 from libs import datalib
 
+
 @click.group()
-def cli():
+def main():
     pass
 
-def create_module(name):
-    pass
 
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
         return
-    click.echo(cprint(figlet_format("TerraMagic-cli", font="slant"), "magenta"))
-    click.echo("A Project for create structure folders and files for Terraform")
+    click.echo(cprint(figlet_format("TerraMagic", font="slant"), "magenta"))
+    click.echo(
+
+        "TerraMagic-cli is a tool for creating a structure of folders and files for Terraform"
+    )
     click.echo("Author: https://github.com/miltlima")
     click.echo("Version: 0.3")
     ctx.exit()
 
 
-@click.command()
-@click.option("--project-name", "-n", default="None", help="Name of the project")
-@click.option("--provider","-p",default="None",help="Provider Name(AWS, Azure, GCP)")
-@click.option("--version", is_flag=True, callback=print_version, expose_value=False, is_eager=True, help="Show version")
-@click.option("--module" "-m", default="None", help="Module name")
-def main(project_name, provider):
-    """ 
-    TerraMagic-cli is a tool for creating a structure of folders and files for Terraform
-    """
+@main.command()
+@click.option("--name", "-n", help="Name of the project")
+@click.option("--env", "-e", help="Environment name(dev, test, prd)", multiple=True)
+@click.option(
+    "--version",
+    "-v",
+    is_flag=True,
+    callback=print_version,
+    expose_value=False,
+    is_eager=True,
+    help="Show version",
+)
+def create_project(name, env):
     try:
-        os.mkdir(project_name)
-        os.chdir(project_name)
-        match provider:
-            case ("AWS"|"Azure"|"GCP"|"OCI"|"aws"|"azure"|"gcp"|"oci"):
+        os.mkdir(name)
+        os.chdir(name)
+        if env:
+            for e in env:
+                os.mkdir(e)
+                os.chdir(e)
                 datalib.modules()
                 for file in datalib.files:
                     open(file, "w+")
-                click.echo(f"Created terraform file for {provider} ☁️ ")
                 os.chdir("..")
-            case _ :
-                for file in datalib.files:
-                    open(file, "w+")
-                click.echo("Created common terraform file")
-                os.chdir("..")
+            click.echo(
+                click.style(
+                    (f"Created project {name} successfully, You're ready move to ☁️ !!"),
+                    fg="green",
+                )
+            )
+        else:
+            click.echo(click.style((f"Environment {env} not found"), fg="red"))
 
     except FileExistsError:
-        click.echo("The directory already exists")
+        click.echo(click.style(("The directory already exists!"), bg="red"))
+        os.chdir("..")
+
 
 if __name__ == "__main__":
     main()
