@@ -1,13 +1,5 @@
 # Terramagic CLI
 
-```shell
-  ______                     __  ___            _                 ___ 
- /_  __/__  ______________ _/  |/  /___ _____ _(_)____      _____/ (_)
-  / / / _ \/ ___/ ___/ __ `/ /|_/ / __ `/ __ `/ / ___/_____/ ___/ / / 
- / / /  __/ /  / /  / /_/ / /  / / /_/ / /_/ / / /__/_____/ /__/ / /  
-/_/  \___/_/  /_/   \__,_/_/  /_/\__,_/\__, /_/\___/      \___/_/_/   
-                                    /____/                 
-```
 
 ## Motivation
 
@@ -19,50 +11,47 @@ Every time , I needed create a terraform files to a new project, and a new terra
 
 ## How to install?
 
-Clone this project to folder you preference:
-
 ```shell
-https://github.com/miltlima/terramagic
+pip install terramagic
 ```
 
-Enter in folder
+## Check the version
 
 ```shell
-cd terramagic
+terramagic --version
+
+ _____                   __  __             _      
+|_   _|__ _ __ _ __ __ _|  \/  | __ _  __ _(_) ___ 
+  | |/ _ \ '__| '__/ _` | |\/| |/ _` |/ _` | |/ __|
+  | |  __/ |  | | | (_| | |  | | (_| | (_| | | (__ 
+  |_|\___|_|  |_|  \__,_|_|  |_|\__,_|\__, |_|\___|
+                                      |___/        
+
+
+TerraMagic is a tool for creating a structure of folders and files for Terraform
+Author: https://github.com/miltlima
+Version: 0.0.9
 ```
 
-ATTENTION: you need install pip packages.
-
-## How to install these pip packages ?
+## Usage(Ex.)
 
 ```shell
-pip install -r requirements.txt
+terramagic create-project --name=<project_name> --env=<env>
 ```
 
-Add permissions in file
-
 ```shell
-chmod +x terraform_magic.py
-```
-
-Move file to system PATH:
-
-```shell
-sudo mv terraform_magic.py /usr/local/bin/terramagic
+terramagic create-project --name=terraform --env=prod --env=dev
 ```
 
 ## How to use this tool ?
 
 ```shell
-Usage: terramagic.py create-project [OPTIONS]
-
-  TerraMagic-cli is a tool to creating a structure of folders and files to a terraform project.
+Usage: terramagic create-project [OPTIONS]
 
 
 Options:
   -n, --name TEXT  Name of the project
   -e, --env TEXT   Environment name(dev, test, prd)
-  -v, --version    Show version
   --help           Show this message and exit.
 ```
 
