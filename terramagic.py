@@ -17,11 +17,10 @@ def print_version(ctx, param, value):
         return
     click.echo(cprint(figlet_format("TerraMagic", font="slant"), "magenta"))
     click.echo(
-
         "TerraMagic-cli is a tool for creating a structure of folders and files for Terraform"
     )
     click.echo("Author: https://github.com/miltlima")
-    click.echo("Version: 0.0.2")
+    click.echo("Version: 0.0.5")
     ctx.exit()
 
 
@@ -51,7 +50,9 @@ def create_project(name, env):
                 os.chdir("..")
             click.echo(
                 click.style(
-                    (f"Created project {name} successfully, You're ready move to ☁️ !!"),
+                    (
+                        f"Created project {name} successfully, You're ready move to ☁️ !!"
+                    ),
                     fg="green",
                 )
             )
