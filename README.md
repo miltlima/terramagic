@@ -54,15 +54,16 @@ sudo mv terraform_magic.py /usr/local/bin/terramagic
 ## How to use this tool ?
 
 ```shell
-Usage: terramagic.py [OPTIONS]
+Usage: terramagic.py create-project [OPTIONS]
 
   TerraMagic-cli is a tool to creating a structure of folders and files to a terraform project.
 
+
 Options:
-  -n, --project-name TEXT  Name of the project
-  -p, --provider TEXT      Provider Name(AWS, Azure, GCP)
-  --version                Show version
-  --help                   Show this message and exit.
+  -n, --name TEXT  Name of the project
+  -e, --env TEXT   Environment name(dev, test, prd)
+  -v, --version    Show version
+  --help           Show this message and exit.
 ```
 
 Enjoy!

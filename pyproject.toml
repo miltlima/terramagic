@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "terramagic"
-version = "0.0.4"
+version = "0.0.9"
 description = "A automate tool for terraform projects"
 authors = ["Milton Jesus <milton.lima@outlook.com>"]
 license = "MIT"
@@ -15,6 +15,9 @@ pyfiglet = "^0.8.post1"
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"
 flake8 = "^4.0.1"
+
+[tool.poetry.scripts]
+terramagic = "terramagic:main"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
