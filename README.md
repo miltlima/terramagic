@@ -15,7 +15,7 @@ Every time , I needed create a terraform files to a new project, and a new terra
 
 ## Requirements
 
-- Python 3.8 >=
+- Python 3.9 >=
 
 ## How to install?
 

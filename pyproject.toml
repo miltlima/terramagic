@@ -1,20 +1,20 @@
 [tool.poetry]
 name = "terramagic"
-version = "0.1.0"
+version = "0.0.4"
 description = "A automate tool for terraform projects"
 authors = ["Milton Jesus <milton.lima@outlook.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "3.9"
+python = "^3.9"
 colorama = "^0.4.4"
 termcolor = "^1.1.0"
 click = "^8.0.3"
+pyfiglet = "^0.8.post1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"
 flake8 = "^4.0.1"
-pytest = "^6.2.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
