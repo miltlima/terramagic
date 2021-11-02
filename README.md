@@ -15,6 +15,10 @@ Every time , I needed create a terraform files to a new project, and a new terra
 pip install terramagic
 ```
 
+## Hands on
+
+[![asciicast](https://asciinema.org/a/xeSFySIjxwGK4x4m83y8BfbZY.png)](https://asciinema.org/a/xeSFySIjxwGK4x4m83y8BfbZY)
+
 ## Check the version
 
 ```shell
