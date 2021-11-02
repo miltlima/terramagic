@@ -42,7 +42,8 @@ def modules():
         os.mkdir(folder)
         os.chdir(folder)
         for file in modules_files:
-            open(file, "w+")
+            handler = open(file, "w+")
+            handler.close()
         os.chdir("..")
     os.chdir("..")
 
@@ -64,7 +65,8 @@ def create_project(name, env):
                 os.chdir(e)
                 modules()
                 for file in files:
-                    open(file, "w+")
+                    handler = open(file, "w+")
+                    handler.close()
                 os.chdir("..")
             click.secho(
                 (f"Created project {name} successfully, You're ready move to ☁️ !!"),fg="green",)
