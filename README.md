@@ -40,11 +40,11 @@ Version: 0.0.9
 ## Usage(Ex.)
 
 ```shell
-terramagic create-project --name=<project_name> --env=<env>
+terramagic create-project --name <project_name> --env <env>
 ```
 
 ```shell
-terramagic create-project --name=terraform --env=prod --env=dev
+terramagic create-project --name terraform --env prod --env dev
 ```
 
 ## How to use this tool ?
