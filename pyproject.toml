@@ -6,7 +6,8 @@ authors = ["Milton Jesus <milton.lima@outlook.com>"]
 license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/miltlima/terramagic"
-repository = "https://github.com/miltlima/terramagic""
+repository = "https://github.com/miltlima/terramagic"
+keywords = ["terraform", "terramagic"]
 classifiers = [
     "Environment :: Console",
     "Operating System :: OS Independent",
