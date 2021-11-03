@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/miltlima/terramagic"
 repository = "https://github.com/miltlima/terramagic"
-keywords = ["terraform", "terramagic"]
+keywords = ["terraform", "terramagic", "python"]
 classifiers = [
     "Environment :: Console",
     "Operating System :: OS Independent",
