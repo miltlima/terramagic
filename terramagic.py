@@ -32,7 +32,7 @@ def print_version(ctx, param, value):
     click.echo(cprint(figlet_format("TerraMagic"), "magenta"))
     click.echo("TerraMagic is a tool for creating a structure of folders and files for Terraform")
     click.echo("Author: https://github.com/miltlima")
-    click.echo("Version: 0.0.9")
+    click.echo("Version: 0.1.1")
     ctx.exit()
 
 def modules():
