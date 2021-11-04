@@ -59,11 +59,11 @@ def create_project(name, env):
     try:
         os.mkdir(name)
         os.chdir(name)
+        modules()
         if env:
             for e in env:
                 os.mkdir(e)
                 os.chdir(e)
-                modules()
                 for file in files:
                     handler = open(file, "w+")
                     handler.close()
