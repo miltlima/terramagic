@@ -29,9 +29,6 @@ modules_files = [
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
         return
-    click.echo(cprint(figlet_format("TerraMagic"), "magenta"))
-    click.echo("TerraMagic is a tool for creating a structure of folders and files for Terraform")
-    click.echo("Author: https://github.com/miltlima")
     click.echo("Version: 0.1.1")
     ctx.exit()
 
