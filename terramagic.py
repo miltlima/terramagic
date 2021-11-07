@@ -29,7 +29,7 @@ modules_files = [
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 0.1.1")
+    click.echo("Version: 0.1.2")
     ctx.exit()
 
 def modules():

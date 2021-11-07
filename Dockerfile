@@ -1,17 +1,13 @@
 FROM python:3-alpine
 
-ARG TERRAFORM_VERSION="1.0.7"
+RUN apk add --update git bash curl unzip zip openssl make
 
-LABEL maintainer="miltlima <milton.lima@outlook.com>"
-LABEL terraform_version=${TERRAFORM_VERSION}
+ENV TERRAFORM_VERSION="1.0.7"
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TERRAFORM_VERSION=${TERRAFORM_VERSION}
+RUN curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
+    && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin \
+    && rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-RUN apk add --update bash curl unzip zip
+RUN pip install terramagic
 
-RUN pip install terramagic \
-    && curl -LO https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
-    && rm *.zip
-
-CMD ["/bin/bash"]
+ENTRYPOINT ["terraform"]
