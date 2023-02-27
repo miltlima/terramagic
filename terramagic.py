@@ -1,10 +1,12 @@
-import os
 import click
+import os
 import shutil
+import subprocess
 from pathlib import Path
 from pyfiglet import figlet_format
 from colorama import init
 from termcolor import cprint
+
 
 MODULES_FOLDER = ["vpc", "cluster", "instance"]
 MODULES_FILES = ["main.tf", "variables.tf", "outputs.tf"]
@@ -17,11 +19,12 @@ PROJECT_FILES = [
     ".gitignore",
 ]
 
-def print_version(ctx, value):
+
+def print_version(ctx, param, value):
     """Print current version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 0.1.3")
+    click.echo("Version: 1.1")
     ctx.exit()
 
 
@@ -101,20 +104,52 @@ def create(name, env):
 @click.option(
     "--name", "-n", help="Name of the project", prompt=True, confirmation_prompt=True
 )
-@click.option("--delete", "-d", is_flag=True, help="Delete the project")
-def remove(name, delete):
+def remove(name):
     """Delete the project"""
-    if delete:
-        if Path(name).exists():
-            click.confirm(f"Are you sure you want to delete {name}?", abort=True)
-            shutil.rmtree(name)
-            click.secho(f"Project {name} deleted successfully", fg="green")
-        else:
-            click.secho(f"Project {name} not found", fg="red")
-    else:
-        click.secho(
-            f"Delete flag not provided, project {name} cannot be deleted ", fg="red"
+    project_dir = Path(name)
+    if project_dir.is_dir():
+        click.confirm(
+            click.style(f"Are you sure you want to delete {name}?", fg="blue"),
+            abort=True,
         )
+        shutil.rmtree(project_dir)
+        click.secho(f"Project {name} deleted successfully", fg="green")
+    else:
+        click.secho(f"Project {name} not found", fg="red")
+
+
+@main.command()
+@click.option(
+    "--name", "-n", help="Name of the project", prompt=True, confirmation_prompt=True
+)
+def check(name):
+    """Check all files inside a Terraform project are valid."""
+    project_dir = Path(name)
+    if not project_dir.is_dir():
+        click.secho(f"Project {name} not found", fg="red")
+        return
+    os.chdir(name)
+    success = True
+    results = []
+    for root, dirs, files in os.walk("."):
+        for file in files:
+            if file.endswith(".tf"):
+                try:
+                    subprocess.check_output(
+                        ["terraform", "validate", os.path.join(root, file)]
+                    )
+                    results.append(f"✔️ {os.path.join(root, file)}")
+                except subprocess.CalledProcessError as e:
+                    success = False
+                    results.append(
+                        f"❌ {os.path.join(root, file)} - {e.output.decode('utf-8').strip()}"
+                    )
+    if success:
+        print("Check succeeded")
+    else:
+        print("Check failed with the following results:")
+        for result in results:
+            print(result)
 
 
 if __name__ == "__main__":
