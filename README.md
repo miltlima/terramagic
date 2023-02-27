@@ -7,7 +7,7 @@ Every time , I needed create a terraform files to a new project, and a new terra
 
 ## Requirements
 
-- Python 3.9 >=
+- Python 3.8 >=
 
 ## How to install?
 
@@ -15,31 +15,51 @@ Every time , I needed create a terraform files to a new project, and a new terra
 pip install terramagic
 ```
 
-## Hands on
+# Hands on
 
 ## Check the version
 
+```bash
+terramagic --version
+```
 
-## Usage(Ex.)
+### Create a new project
 
 ```shell
-terramagic create-project --name <project_name> --env <env>
+terramagic create --name <project name> --env <env>
 ```
 
 ```shell
-terramagic create-project --name terraform --env prod --env dev
+terramagic create --name terraform --env prod --env dev
+```
+
+### Delete a project
+
+```shell
+terramagic delete --name <project name>
+```
+
+### Check if all terraform files configuration are valid.
+
+```shell
+terramagic check --name <project name>
 ```
 
 ## How to use this tool ?
 
 ```shell
-Usage: terramagic create-project [OPTIONS]
+Usage: terramagic [OPTIONS] COMMAND [ARGS]...
 
+  ClI tool to create Terraform project
 
 Options:
-  -n, --name TEXT  Name of the project
-  -e, --env TEXT   Environment name(dev, test, prd)
-  --help           Show this message and exit.
+  -v, --version  Show version
+  --help         Show this message and exit.
+
+Commands:
+  check   Check all files inside a Terraform project are valid.
+  create  Create a new Terraform project with specified name and environment
+  remove  Delete the project
 ```
 
 Enjoy!
