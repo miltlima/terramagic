@@ -24,7 +24,7 @@ def print_version(ctx, param, value):
     """Print current version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 1.3")
+    click.echo("Version: 1.4")
     ctx.exit()
 
 
