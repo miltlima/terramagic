@@ -1,6 +1,5 @@
 # Terramagic CLI
 
-
 ## Motivation
 
 Every time , I needed create a terraform files to a new project, and a new terraform files., but this is not good. and now we have a Terramagic tool to help us to create a terraform files.
@@ -14,8 +13,6 @@ Every time , I needed create a terraform files to a new project, and a new terra
 ```shell
 pip install terramagic
 ```
-
-# Hands on
 
 ## Check the version
 
