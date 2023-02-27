@@ -1,11 +1,4 @@
-click==8.0.3; python_version >= "3.6" \
-    --hash=sha256:353f466495adaeb40b6b5f592f9f91cb22372351c84caeb068132442a4518ef3 \
-    --hash=sha256:410e932b050f5eed773c4cda94de75971c89cdb3155a72a0831139a79e5ecb5b
-colorama==0.4.4; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0") \
-    --hash=sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2 \
-    --hash=sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b
-pyfiglet==0.8.post1 \
-    --hash=sha256:d555bcea17fbeaf70eaefa48bb119352487e629c9b56f30f383e2c62dd67a01c \
-    --hash=sha256:c6c2321755d09267b438ec7b936825a4910fec696292139e664ca8670e103639
-termcolor==1.1.0 \
-    --hash=sha256:1d6d69ce66211143803fbc56652b41d73b4a400a2891d7bf7a1cdf4c02de613b
+click==8.0.3
+colorama==0.4.4
+pyfiglet==0.8.post1
+termcolor==1.1.0
