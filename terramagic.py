@@ -41,7 +41,7 @@ def create_env_folders(env):
     """Create the specified environment folders"""
     for e in env:
         Path(e).mkdir()
-        click.echo(f"Created {e} folder.")
+        click.echo(f"Created {e} environment.")
 
 
 def create_env_files(env):
