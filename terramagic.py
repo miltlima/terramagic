@@ -1,4 +1,3 @@
-import click
 import os
 import shutil
 import subprocess
@@ -6,6 +5,7 @@ from pathlib import Path
 from pyfiglet import figlet_format
 from colorama import init
 from termcolor import cprint
+import click
 
 
 MODULES_FOLDER = ["vpc", "cluster", "instance"]
@@ -150,7 +150,10 @@ def check(name):
         print("Check failed with the following results:")
         for result in results:
             print(result)
+        click.secho(
+            "Please inspect and solve the above issues before continuing", fg="yellow"
+        )
 
 
 if __name__ == "__main__":
-    main()
+    main(prog_name="terramagic cli tool")
