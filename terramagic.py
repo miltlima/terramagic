@@ -2,9 +2,6 @@ import os
 import shutil
 import subprocess
 from pathlib import Path
-from pyfiglet import figlet_format
-from colorama import init
-from termcolor import cprint
 import click
 
 
@@ -24,7 +21,7 @@ def print_version(ctx, param, value):
     """Print current version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 1.4")
+    click.echo("Version: 0.1.7")
     ctx.exit()
 
 
@@ -35,7 +32,7 @@ def create_modules():
         Path(f"modules/{folder}").mkdir()
         os.chdir(f"modules/{folder}")
         for file in MODULES_FILES:
-            with open(file, "w+") as handler:
+            with open(file, "w+", encoding="utf-8") as handler:
                 pass
         os.chdir("../..")
 
@@ -44,7 +41,6 @@ def create_env_folders(env):
     """Create the specified environment folders"""
     for e in env:
         Path(e).mkdir()
-        click.echo(f"Created {e} environment.")
 
 
 def create_env_files(env):
@@ -52,7 +48,7 @@ def create_env_files(env):
     for e in env:
         os.chdir(e)
         for file in PROJECT_FILES:
-            with open(file, "w+") as handler:
+            with open(file, "w+", encoding="utf-8") as handler:
                 pass
         os.chdir("..")
 
@@ -93,7 +89,7 @@ def create(name, env):
         create_env_files(env)
         click.secho(
             (f"Created project {name} successfully, You're ready move to ☁️ !!"),
-            fg="green",
+            fg="blue",
         )
     except FileExistsError:
         click.secho(("The directory already exists!"), bg="red")
@@ -109,11 +105,11 @@ def remove(name):
     project_dir = Path(name)
     if project_dir.is_dir():
         click.confirm(
-            click.style(f"Are you sure you want to delete {name}?", fg="blue"),
+            click.style(f"Are you sure you want to delete {name}?", fg="cyan"),
             abort=True,
         )
         shutil.rmtree(project_dir)
-        click.secho(f"Project {name} deleted successfully", fg="green")
+        click.secho(f"Project {name} deleted successfully !!!", fg="blue")
     else:
         click.secho(f"Project {name} not found", fg="red")
 
@@ -156,4 +152,4 @@ def check(name):
 
 
 if __name__ == "__main__":
-    main(prog_name="terramagic cli tool")
+    main()
