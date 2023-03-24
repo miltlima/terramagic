@@ -21,7 +21,7 @@ def print_version(ctx, param, value):
     """Print current version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 0.1.7")
+    click.echo("Version: 0.1.8")
     ctx.exit()
 
 
@@ -112,43 +112,6 @@ def remove(name):
         click.secho(f"Project {name} deleted successfully !!!", fg="blue")
     else:
         click.secho(f"Project {name} not found", fg="red")
-
-
-@main.command()
-@click.option(
-    "--name", "-n", help="Name of the project", prompt=True, confirmation_prompt=True
-)
-def check(name):
-    """Check all files inside a Terraform project are valid."""
-    project_dir = Path(name)
-    if not project_dir.is_dir():
-        click.secho(f"Project {name} not found", fg="red")
-        return
-    os.chdir(name)
-    success = True
-    results = []
-    for root, dirs, files in os.walk("."):
-        for file in files:
-            if file.endswith(".tf"):
-                try:
-                    subprocess.check_output(
-                        ["terraform", "validate", os.path.join(root, file)]
-                    )
-                    results.append(f"✔️ {os.path.join(root, file)}")
-                except subprocess.CalledProcessError as e:
-                    success = False
-                    results.append(
-                        f"❌ {os.path.join(root, file)} - {e.output.decode('utf-8').strip()}"
-                    )
-    if success:
-        print("Check succeeded")
-    else:
-        print("Check failed with the following results:")
-        for result in results:
-            print(result)
-        click.secho(
-            "Please inspect and solve the above issues before continuing", fg="yellow"
-        )
 
 
 if __name__ == "__main__":
