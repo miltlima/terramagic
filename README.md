@@ -1,48 +1,74 @@
 # Terramagic CLI
 
+Terramagic is a command-line interface tool that makes it easy to create and manage Terraform projects.
+
 ## Motivation
 
-Every time , I needed create a terraform files to a new project, and a new terraform files., but this is not good. and now we have a Terramagic tool to help us to create a terraform files.
+Creating a new Terraform project from scratch can be time-consuming and error-prone. With Terramagic, you can quickly generate a template for your project and customize it to your needs.
 
-## Requirements
+### Requirements
 
-- Python 3.8 >=
+Python 3.8 or higher
 
-## How to install?
+### Installation
+
+You can easily install Terramagic using pip:
 
 ```shell
 pip install terramagic
 ```
 
-## Check the version
+### Usage
 
-```bash
-terramagic --version
-```
+#### Creating a new project
 
-### Create a new project
+To create a new Terraform project, use the create command:
 
 ```shell
-terramagic create --name <project name> --env <env>
+terramagic create --name <project_name> --env <environment_name>
 ```
+
+For example, to create a project called "myapp" with two environments ("dev" and "prod"), run:
 
 ```shell
-terramagic create --name terraform --env prod --env dev
+terramagic create --name myapp --env dev --env prod
 ```
 
-### Delete a project
+This will generate a new directory called "myapp" with the following structure:
+
+```code
+myapp/
+├── dev.tfvars
+├── main.tf
+├── outputs.tf
+├── prod.tfvars
+└── variables.tf
+```
+
+You can then edit these files to define your infrastructure resources and variables.
+
+#### Deleting a project
+
+To delete an existing project, use the delete command and specify the project name:
 
 ```shell
-terramagic delete --name <project name>
+terramagic delete --name <project_name>
 ```
 
-### Check if all terraform files configuration are valid.
+For example, to delete the "myapp" project, run:
 
 ```shell
-terramagic check --name <project name>
+terramagic delete --name myapp
 ```
 
-## How to use this tool ?
+Help
+For detailed information about available commands and options, run:
+
+```shell
+terramagic --help
+```
+
+This will display the following message:
 
 ```shell
 Usage: terramagic [OPTIONS] COMMAND [ARGS]...
@@ -54,9 +80,8 @@ Options:
   --help         Show this message and exit.
 
 Commands:
-  check   Check all files inside a Terraform project are valid.
   create  Create a new Terraform project with specified name and environment
   remove  Delete the project
 ```
 
-Enjoy!
+Enjoy using Terramagic to simplify your Terraform workflow!
