@@ -15,7 +15,7 @@ Python 3.8 or higher
 You can easily install Terramagic using pip:
 
 ```shell
-pip install terramagic
+pip3 install terramagic
 ```
 
 ### Usage
