@@ -36,7 +36,7 @@ For example, to create a project called "infra" automatically 3 environments are
 terramagic create --name infra
 ```
 
-This will generate a new directory called "myapp" with the following structure:
+This will generate a new directory called "infra" with the following structure:
 
 ```code
 infra
