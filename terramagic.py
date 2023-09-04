@@ -21,36 +21,44 @@ def print_version(ctx, param, value):
     """Print current version"""
     if not value or ctx.resilient_parsing:
         return
-    click.echo("Version: 0.1.8")
+    click.echo("Version: 0.2.9")
     ctx.exit()
 
 
-def create_modules():
-    """Create the modules directory and its subdirectories and files"""
-    Path("modules").mkdir()
+def create_project_files(base_path):
+    for file in PROJECT_FILES:
+        file_path = base_path / file
+        with file_path.open("w+", encoding="utf-8"):
+            pass
+
+def create_modules(base_path):
+
+    modules_path = base_path / "modules"
+    modules_path.mkdir(exist_ok=True)
+
     for folder in MODULES_FOLDER:
-        Path(f"modules/{folder}").mkdir()
-        os.chdir(f"modules/{folder}")
-        for file in MODULES_FILES:
-            with open(file, "w+", encoding="utf-8") as handler:
-                pass
-        os.chdir("../..")
+        folder_path = modules_path / folder
+        folder_path.mkdir(exist_ok=True)
 
+        with folder_path:
+            for file in MODULES_FILES:
+                file_path = folder_path / file
+                with file_path.open("w+", encoding="utf-8"):
+                    pass
 
-def create_env_folders(env):
-    """Create the specified environment folders"""
-    for e in env:
-        Path(e).mkdir()
+def create_env_folders(base_path):
 
+    envs_path = base_path / "environments"
+    envs_path.mkdir(exist_ok=True)
+    envs = ["production", "development", "staging" ]
+    for e in envs:
+        env_path = envs_path / e
+        env_path.mkdir(exist_ok=True)
 
-def create_env_files(env):
-    """Create the terraform files for each environment"""
-    for e in env:
-        os.chdir(e)
-        for file in PROJECT_FILES:
-            with open(file, "w+", encoding="utf-8") as handler:
-                pass
-        os.chdir("..")
+        tfvars_file_path = env_path / f"{e}.tfvars"
+        with tfvars_file_path.open("w", encoding="utf-8"):
+            pass
+
 
 
 @click.group()
@@ -72,21 +80,16 @@ def main():
 @click.option(
     "--name", "-n", help="Name of the project", prompt=True, confirmation_prompt=True
 )
-@click.option(
-    "--env",
-    "-e",
-    help="Environment name(dev, stg, prd)",
-    prompt=True,
-    multiple=True,
-)
-def create(name, env):
+
+def create(name):
     """Create a new Terraform project with specified name and environment"""
+
+    base_path = Path(name)
     try:
-        Path(name).mkdir()
-        os.chdir(name)
-        create_modules()
-        create_env_folders(env)
-        create_env_files(env)
+        base_path.mkdir(exist_ok=True)
+        create_modules(base_path)
+        create_env_folders(base_path)
+        create_project_files(base_path)
         click.secho(
             (f"Created project {name} successfully, You're ready move to ☁️ !!"),
             fg="blue",
