@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "terramagic"
-version = "0.1.8"
+version = "0.2.9"
 description = "A automate tool for terraform projects"
 authors = ["Milton Jesus <milton.lima@outlook.com>"]
 license = "MIT"

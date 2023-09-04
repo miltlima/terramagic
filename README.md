@@ -27,23 +27,43 @@ pip3 install terramagic
 To create a new Terraform project, use the create command:
 
 ```shell
-terramagic create --name <project_name> --env <environment_name>
+terramagic create --name <project_name> 
 ```
 
-For example, to create a project called "myapp" with two environments ("dev" and "prod"), run:
+For example, to create a project called "infra" automatically 3 environments are created ("development", "staging" and "production") and respective tfvars, run:
 
 ```shell
-terramagic create --name myapp --env dev --env prod
+terramagic create --name infra
 ```
 
 This will generate a new directory called "myapp" with the following structure:
 
 ```code
-myapp/
-├── dev.tfvars
+infra
+├── backend.tf
+├── environments
+│   ├── development
+│   │   └── development.tfvars
+│   ├── production
+│   │   └── production.tfvars
+│   └── staging
+│       └── staging.tfvars
 ├── main.tf
+├── main.tfvars
+├── modules
+│   ├── cluster
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── instance
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── vpc
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
 ├── outputs.tf
-├── prod.tfvars
 └── variables.tf
 ```
 
