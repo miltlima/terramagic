@@ -64,6 +64,8 @@ infra
 │       ├── outputs.tf
 │       └── variables.tf
 ├── outputs.tf
+├── providers
+│   └── provider.tf
 └── variables.tf
 ```
 
@@ -80,7 +82,7 @@ terramagic delete --name <project_name>
 For example, to delete the "myapp" project, run:
 
 ```shell
-terramagic delete --name myapp
+terramagic delete --name infra
 ```
 
 Help
